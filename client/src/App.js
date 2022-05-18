@@ -40,34 +40,55 @@ function App() {
   }, [photoCategory]);
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        margin: "5px 5px",
+        padding: "10px 10px",
+        backgroundColor: "#f0e6ff",
+        boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+      }}
+    >
       <NavBar
         photoCategory={photoCategory}
         setPhotoCategory={setPhotoCategory}
       />
       {isLoading ? (
-        <>
-          <NavButton
-            direction="left"
-            index={index}
-            setIndex={setIndex}
-            photoNum={photoList.length}
-          />
-          <div>
-            <img
-              style={{ width: "400px", height: "300px" }}
-              src={photoList[index]}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
+          <div className="buttonContainer" style={{ alignSelf: "center" }}>
+            <NavButton
+              direction="left"
+              index={index}
+              setIndex={setIndex}
+              photoNum={photoList.length}
             />
           </div>
-          <NavButton
-            direction="right"
-            index={index}
-            setIndex={setIndex}
-            photoNum={photoList.length}
-          />
-        </>
+          <div>
+            <img
+              style={{
+                width: "400px",
+                height: "300px",
+                padding: "10px",
+                border: "1px solid #ddccff",
+                borderRadius: "10px",
+              }}
+              src={photoList[index % photoList.length]}
+            />
+          </div>
+          <div className="buttonContainer" style={{ alignSelf: "center" }}>
+            <NavButton
+              direction="right"
+              index={index}
+              setIndex={setIndex}
+              photoNum={photoList.length}
+            />
+          </div>
+          <div style={{ gridColumn: 2 }}>
+            {(index % photoList.length) + 1}/{photoList.length}
+          </div>
+        </div>
       ) : (
-          <p> Loading... </p>
+        <p> Loading... </p>
       )}
     </div>
   );

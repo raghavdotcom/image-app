@@ -1,6 +1,6 @@
 const NavBar = ({ photoCategory, setPhotoCategory }) => {
-  const catsColor = photoCategory !== "shark" ? "red" : "black";
-  const sharksColor = photoCategory !== "cat" ? "red" : "black";
+  const catsColor = photoCategory !== "shark" ? "#944dff" : "#e7e7e7";
+  const sharksColor = photoCategory !== "cat" ? "#944dff" : "#e7e7e7";
   const buttonStyles = {
     width: "70px",
     margin: "5px 5px",
@@ -31,13 +31,13 @@ const NavBar = ({ photoCategory, setPhotoCategory }) => {
       }}
     >
       <button
-        style={{ ...buttonStyles, color: sharksColor }}
+        style={{ ...buttonStyles, backgroundColor: sharksColor }}
         onClick={(event) => clickhandler(event)}
       >
         Sharks
       </button>
       <button
-        style={{ ...buttonStyles, color: catsColor }}
+        style={{ ...buttonStyles, backgroundColor: catsColor }}
         onClick={(event) => clickhandler(event)}
       >
         Cats

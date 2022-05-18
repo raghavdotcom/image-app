@@ -1,9 +1,4 @@
-const NavButton = ({
-  direction,
-  index,
-  photoNum,
-  setIndex,
-}) => {
+const NavButton = ({ direction, index, photoNum, setIndex }) => {
   const cycleNav = true;
   let disabled = false;
   if (!cycleNav) {
@@ -25,12 +20,12 @@ const NavButton = ({
       <button
         disabled={disabled}
         onClick={() => navClickhandler(direction)}
+        onKeyDown={() => navClickhandler("left")}
+        style={{ width: "50px", height: "30px" }}
       >
-        {direction === "left" ? (
-          "<-"
-        ) : (
-          "->"
-        )}
+        {direction === "left"
+          ? String.fromCharCode(8592)
+          : String.fromCharCode(8594)}
       </button>
     </div>
   );
